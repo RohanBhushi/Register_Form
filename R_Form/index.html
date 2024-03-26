@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+    }
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background: linear-gradient(to right, #af4ca2, #7645bb); /* Multiple background colors */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .form-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #fff; /* Form title color */
+    }
+    .form-group label {
+        font-weight: bold;
+        color: #fff; /* Form group label color */
+    }
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group input[type="tel"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+    .form-group select {
+        width: 100%; 
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+    .form-group textarea {
+        resize: vertical;
+    }
+    .form-group input[type="file"] {
+        border: none;
+    }
+    .form-group input[type="file"]:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .btn-primary {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: #51caa6;
+        color: #fff;
+        cursor: pointer;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .form-data-container {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        white-space: pre-wrap;
+    }
+    .error {
+        border: 1px solid red !important;
+    }
+    .success {
+        border: 1px solid green !important;
+    }
+    .uploaded-image {
+        max-width: 100px;
+        max-height: 100px;
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-container">
+                <h2 class="form-title">Registration Form</h2>
+                <form id="myForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                        <div class="invalid-feedback" id="firstNameError">Enter a valid first name.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                        <div class="invalid-feedback" id="lastNameError">Enter a valid last name.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" class="form-control" id="mobile" pattern="[0-9]{10}" maxlength="10" required>
+                        <div class="invalid-feedback" id="mobileError">Enter a valid 10-digit mobile number.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">Skills</label>
+                        <select id="skills" class="form-control selectpicker" multiple data-live-search="true" title="Choose Skills" required>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Bootstrap">Bootstrap</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Higher Education</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="education" id="bachelors" value="Bachelors">
+                            <label class="form-check-label" for="bachelors">Bachelors</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="education" id="masters" value="Masters">
+                            <label class="form-check-label" for="masters">Masters</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkboxEducation">Other Education</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="checkboxEducation" id="be" value="B.E">
+                            <label class="form-check-label" for="be">B.E</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="checkboxEducation" id="mca" value="MCA">
+                            <label class="form-check-label" for="mca">MCA</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="checkboxEducation" id="mba" value="MBA">
+                            <label class="form-check-label" for="mba">MBA</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="checkboxEducation" id="btech" value="B Tech">
+                            <label class="form-check-label" for="btech">B Tech</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="checkboxEducation" id="bca" value="BCA">
+                            <label class="form-check-label" for="bca">BCA</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="checkboxEducation" id="bcom" value="B Com">
+                            <label class="form-check-label" for="bcom">B Com</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="other" value="Other">
+                            <label class="form-check-label" for="other">Other</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUpload">Upload Images</label>
+                        <input type="file" class="form-control-file" id="imageUpload" accept="image/*" multiple>
+                    </div>
+                    <div class="form-group" id="uploadedImages"></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="form-data-container" id="formDataContainer"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script>
+    document.getElementById('firstName').addEventListener('input', function(event) {
+        validateName(this, 'firstNameError');
+    });
+
+    document.getElementById('lastName').addEventListener('input', function(event) {
+        validateName(this, 'lastNameError');
+    });
+
+    document.getElementById('mobile').addEventListener('input', function(event) {
+        validateMobile(this, 'mobileError');
+    });
+
+    function validateName(input, errorId) {
+        let inputValue = input.value.trim();
+        let valid = /^[A-Za-z]+$/.test(inputValue);
+
+        if (!valid) {
+            showError(input, errorId);
+        } else {
+            showSuccess(input, errorId);
+        }
+    }
+
+    function validateMobile(input, errorId) {
+        let inputValue = input.value.trim();
+        let valid = /^[0-9]{10}$/.test(inputValue);
+
+        if (!valid) {
+            showError(input, errorId);
+        } else {
+            showSuccess(input, errorId);
+        }
+    }
+
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let firstNameInput = document.getElementById('firstName');
+        let lastNameInput = document.getElementById('lastName');
+        let firstNameValue = firstNameInput.value.trim();
+        let lastNameValue = lastNameInput.value.trim();
+
+        let firstNameValid = /^[A-Za-z]+$/.test(firstNameValue);
+        let lastNameValid = /^[A-Za-z]+$/.test(lastNameValue);
+        let mobileValid = /^[0-9]{10}$/.test(document.getElementById('mobile').value.trim());
+
+        if (!firstNameValid) {
+            showError(firstNameInput, 'firstNameError');
+        } else {
+            showSuccess(firstNameInput, 'firstNameError');
+        }
+
+        if (!lastNameValid) {
+            showError(lastNameInput, 'lastNameError');
+        } else {
+            showSuccess(lastNameInput, 'lastNameError');
+        }
+
+        if (!mobileValid) {
+            showError(document.getElementById('mobile'), 'mobileError');
+        } else {
+            showSuccess(document.getElementById('mobile'), 'mobileError');
+        }
+
+        if (firstNameValid && lastNameValid && mobileValid) {
+            let formData = {
+                firstName: firstNameValue,
+                lastName: lastNameValue,
+                email: document.getElementById('email').value,
+                dob: document.getElementById('dob').value,
+                mobile: document.getElementById('mobile').value,
+                skills: Array.from(document.getElementById('skills').selectedOptions).map(option => option.value),
+                education: document.querySelector('input[name="education"]:checked').value,
+                otherEducation: Array.from(document.querySelectorAll('input[name="checkboxEducation"]:checked')).map(checkbox => checkbox.value),
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                description: document.getElementById('description').value,
+                images: Array.from(document.getElementById('imageUpload').files).map(file => ({
+                    name: file.name,
+                    size: file.size,
+                    type: file.type,
+                    preview: URL.createObjectURL(file) 
+                }))
+            };
+
+            console.log(formData); 
+        }
+    });
+
+    document.getElementById('imageUpload').addEventListener('change', function(event) {
+        let uploadedImagesContainer = document.getElementById('uploadedImages');
+        uploadedImagesContainer.innerHTML = '';
+
+        Array.from(event.target.files).forEach(file => {
+            let img = document.createElement('img');
+            img.classList.add('uploaded-image');
+            img.src = URL.createObjectURL(file);
+
+            uploadedImagesContainer.appendChild(img);
+        });
+    });
+
+    function showError(input, errorId) {
+        input.classList.remove('success');
+        input.classList.add('error');
+        document.getElementById(errorId).style.display = 'block';
+    }
+
+    function showSuccess(input, errorId) {
+        input.classList.remove('error');
+        input.classList.add('success');
+        document.getElementById(errorId).style.display = 'none';
+    }
+
+    
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("dob").setAttribute("max", today);
+</script>
+
+</body>
+</html>
